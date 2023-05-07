@@ -31,6 +31,9 @@ app.get('/api/:date?', function(req, res){
   // check if no date provided
   if (!givenDate) {
     date = new Date();
+    const utc = date.toUTCString();
+    const unix = date.getTime()
+    res.json({unix,utc});
   } else {
     // check if unix time:
     //    number string multiplied by 1 gives this number, data string gives NaN
